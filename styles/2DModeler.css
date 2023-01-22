@@ -1,0 +1,17 @@
+#top-banner-div-container {
+    display: flex;
+    align-items: center;
+}
+
+#top-banner {
+    
+}
+
+#canvas1 {
+    border: 2px solid;
+    display: inline;
+}
+
+#multiColContainer {
+    column-count: 2;
+}
