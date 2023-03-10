@@ -1,10 +1,10 @@
 #top-banner-div-container {
     display: flex;
     align-items: center;
-}
-
-#top-banner {
-    
+    justify-content: center;
+    /* This finally worked. (Adding "justify-content: center;" made it work. So I guess flexbocx plus that. Or maybe that property is part of flexbox. Idk.) */
+    /* This keeps the h1 centered even when the page is resized.
+       (If you resize the browser window (and thus the page), and then look at it again, "2D Modeler" will still be centered.) */
 }
 
 #canvas1 {
@@ -14,4 +14,20 @@
 
 #multiColContainer {
     column-count: 2;
+}
+
+.bottomBar
+{
+    /* Video example by channel "dcode". */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #333333; /* dark gray */
+    color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    padding: 10px;
+    
+    /* I think it might look good the way he sets it up at around 5:08 but come back to that in a minute. */
 }

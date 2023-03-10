@@ -5,6 +5,7 @@ var snapModeState;
 var userInterfaceState;
 var newShape;
 var shapes;
+var shapesTranslated;
 
 var POINT_RADIUS;
 
@@ -543,12 +544,12 @@ function addACircle(mouseEvent)
 
 function drawShape(shape)
 {
-    if (shape.constructor.name == "Point") {
+    if (shape.name == "Point") {
         theContext.beginPath();
         theContext.arc(shape.x, shape.y, POINT_RADIUS, 0, 2*Math.PI);
         theContext.fill();
     }
-    if (shape.constructor.name == "LineSegment"){
+    if (shape.name == "LineSegment"){
         //drawShape(shape.end1);
         //drawShape(shape.end2);
         // If you want the line segment to have bigger endpoints, like endpoints more than
@@ -560,15 +561,27 @@ function drawShape(shape)
         theContext.lineTo(shape.end2.x, shape.end2.y);
         theContext.stroke();
     }
-    if (shape.constructor.name == "ReferenceLine") {
+    if (shape.name == "Polyline") {
+        
+        // I am doing a Polyline as an (Javascript).Array of (my).Points.
+        
+        var polyline = shape;
+        theContext.beginPath();
+        for (var currentIndex = 0; currentIndex <= ((polyline.points.length-1)-1); currentIndex++) {
+            theContext.moveTo(polyline.points[currentIndex].x, polyline.points[currentIndex].y);
+            theContext.lineTo(polyline.points[currentIndex+1].x, polyline.points[currentIndex+1].y);
+        }
+        theContext.stroke();
+    }
+    if (shape.name == "ReferenceLine") {
         console.log("Still need to to do the math to draw a ReferenceLine.");
     }
-    if (shape.constructor.name == "Rectangle"){
+    if (shape.name == "Rectangle"){
         theContext.beginPath();
         theContext.rect(shape.corner.x, shape.corner.y,  shape.diagonalCorner.x - shape.corner.x, shape.diagonalCorner.y - shape.corner.y);
         theContext.stroke();
     }
-    if (shape.constructor.name == "Circle"){
+    if (shape.name == "Circle"){
         theContext.beginPath();
         theContext.arc(shape.center.x, shape.center.y,  shape.radius,  0, 2*Math.PI);
         theContext.stroke();
@@ -578,4 +591,71 @@ function drawShape(shape)
 function drawReferenceLine(refline)
 {
     
+}
+
+
+
+
+
+document.getElementById("saveCurrentModelButton").addEventListener("click", (e) =>
+{
+    saveModelToAFile();
+});
+
+function saveModelToAFile()
+{
+    downloadGenericThingToFile(JSON.stringify(shapes, null, "  "), "model.json", "application/json");
+}
+
+// I found this function and this file's "saveModel" function (basically)
+// at https://robkendal.co.uk/blog/2020-04-17-saving-text-to-client-side-file-using-vanilla-js .
+// Credit = Mr. Rob Kendal.
+function downloadGenericThingToFile(content, filename, contentType)
+{
+    const a = document.createElement('a');
+    const file = new Blob([content], {type: contentType});
+    
+    a.href = URL.createObjectURL(file);
+    a.download = filename;
+    a.click();
+    
+    URL.revokeObjectURL(a.href);
+    // remove the 'a' element?
+}
+
+
+
+document.getElementById("chooseModelFileInput").addEventListener("change", (e) =>
+{
+    loadModel(document.getElementById("chooseModelFileInput").files[0]);
+});
+
+function loadModel(filepath)
+{
+    var fileReader = new FileReader();
+    
+    fileReader.onload = () =>
+    {
+        try
+        {
+            shapes = JSON.parse(fileReader.result);
+            
+            for (const item of shapes) {
+                drawShape(item);
+            }
+        } catch (e)
+        {
+            var message = `Problem using JSON.parse() on the file.
+            Filename was ${e.fileName}.
+            Line number was ${e.lineNumber}.
+            Column number was ${e.columnNumber}.
+            Stack = ${e.stack}.`;
+            
+            console.error(message);
+            
+            alert(message);
+        }
+    };
+    
+    fileReader.readAsText(filepath);
 }

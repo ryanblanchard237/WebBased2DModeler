@@ -8,22 +8,9 @@
         <link rel="stylesheet" href="styles\2DModeler.css">
     </head>
     <body>
-        <!--<h1 id="top-banner">2D Modeler</h1>-->
-        
         <div id="top-banner-div-container">
-            <h1 id="top-banner">2D Modeler</h1>
+            <h1>2D Modeler</h1>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         <canvas id="canvas1"></canvas><br>
         
@@ -39,19 +26,71 @@
         <!--<input type="checkbox" id="snapModeCheckbox"></input><br>-->
         
         <div>
+            <input type="checkbox" id="panModeCheckbox">
+            <label>Pan mode</label>
+        </div>
+        
+        <div id="">
             <input type="checkbox" id="showMouseCoordsCheckbox">
             <label for="showMouseCoordsCheckbox">Show the current mouse coordinates. (Not working yet.)</label>
         </div>
         
-        <div>
+        <div id="">
             <input type="checkbox" id="drawingAnimationsCheckbox">
             <label for="">Animations when you're drawing. (Not working yet.)</label>
         </div>
         
-        <div>
+        <div id="">
             <input type="text" id="manuallyEnterNextMouseclickInput">
             <label for="manuallyEnterNextMouseclickInput">Coordinate for the next click. (Not working yet.)</label>
+            <button id="setCursorCoordinatesButton">Go</button>
         </div>
+        
+        <br>
+        
+        <button id="saveCurrentModelButton">Save the current model to a local file</button><br>
+        <span>Name for the file - </span>
+        <input type="text" id="saveModelFilenameInput"></input><br><br>
+        
+        <span>Load a model from a file.</span><br>
+        <input type="file" id="chooseModelFileInput">
+        
+        
+        
+        <br>
+        <hr>
+        <p>Debug area</p>
+        
+        <!-- transform the canvas. -->
+        
+        <input type="text" id="canvasTranslateTextbox" class="canvas-transformation-textbox">
+        <span>translate(x, y)</span>
+        <button id="translateCanvasButton" class="canvas-transformation-button">Apply</button>
+        <input type="checkbox" id="panModeCheckboxDebug"><label>Pan mode</label>
+        <br>
+        
+        <input type="text" id="canvasRotateTextbox" class="canvas-transformation-textbox">
+        <label>rotate(angleInRadians)</label>
+        <button class="canvas-transformation-button">Apply</button><br>
+        
+        <input type="text" id="canvasScaleTextbox" class="canvas-transformation-textbox">
+        <label>scale(x, y)</label>
+        <button class="canvas-transformation-button">Apply</button><br>
+        
+        <button class="canvas-transformation-button">Log to the console the current transformations.</button><br>
+        
+        <br><br><br>
+        
+        <!-- also now i nkjnow more about span and label. -->
+        
+        
+        
+        <div class="bottomBar">
+            <span>Info bar item 1 | </span>
+            <span>Info bar item 2 | </span>
+            <span>Info bar item 3</span>
+        </div>
+        
     </body>
 </html>
 

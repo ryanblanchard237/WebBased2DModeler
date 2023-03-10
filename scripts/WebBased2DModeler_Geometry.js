@@ -2,6 +2,7 @@ class Point
 {
     constructor(x, y)
     {
+        this.name = 'Point';
         this.x = x; // Should be a JS Number.
         this.y = y; // Should be a JS Number.
     }
@@ -11,6 +12,7 @@ class LineSegment
 {
     constructor(end1, end2)
     {
+        this.name = 'LineSegment';
         this.end1 = end1; // Should be a (this_file) Point.
         this.end2 = end2; // Should be a (this_file) Point.
     }
@@ -20,17 +22,9 @@ class Polyline
 {
     constructor(points)
     {
-        // This class shouldn't really be given an argument to the constructor.
-        // (Actually not at all.)
-        // But I think you might have to have it like this for the software (Javascript) to be happy.
+        this.name = 'Polyline';
         this.points = points;
-        
-        // As opposed to... (had it like this before. For a little while.)
-        //
-        // constructor()
-        // {
-        //     this.points;
-        // }
+        // Can just do `this.points = [];`?
     }
 }
 
@@ -54,6 +48,7 @@ class Rectangle
 {
     constructor(corner, diagonalCorner)
     {
+        this.name = 'Rectangle';
         this.corner = corner; // Should be a (this_file) Point.
         this.diagonalCorner = diagonalCorner; // Should be a (this_file) Point.
     }
@@ -63,6 +58,7 @@ class Circle
 {
     constructor(center, radius)
     {
+        this.name = 'Circle';
         this.center = center; // Should be a (this_file) Point.
         this.radius = radius; // Should be a JS Number.
     }
