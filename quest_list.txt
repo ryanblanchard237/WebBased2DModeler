@@ -1,0 +1,76 @@
+This is a list of features I want to add to the program.
+--------------------------------------------------------
+
+The next thing I want to try to do with this program is, add "snapping".
+
+For example.
+If you already have a rectangle drawn and you want to add a circle. And you want
+the circle center to be the same as one corner of the rectangle.
+Basically snapping (snap to) provides the functionality that does that.
+
+-- Probably need to rework some of the exisiting base gemoetry so that
+   all points... (more edetial ehre) are logged. (Actually *shwoing* the points
+   on the drawing area might be a different thing but we probably need to start tracking all points.)
+
+
+
+
+
+Also at some point want to add
+-- translation of the sketch. (Move left/right and up/down.)
+-- Scaling (zoom).
+-- I guess rotation screw it might as well.
+
+With translation...
+  drag-and-move with the mouse      sure
+  move with the arrow keys          mahybe sure could take a look at it.
+  
+Zoom
+  The mouse wheel would be natural.
+  On Google Maps I can use the minus and plus signs (hyphen and plus signs) to zoom.
+    And I kinda like that ability.
+    
+    if (mouse_is_over_the_canvas and the_program_is_capturing_mouse_inputs_for_sketch_translation_and_scaling)
+    { }
+
+  Checkbox for "mouse to move/zoom".
+  Add/Remove event listener.
+  
+  
+  
+  
+  
+  
+  
+  
+Bottom status bar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If I eventually take this into 3D...
+
+  3 points defines a plane.
+  4 points defines a solid.
+    - If you have 4 points, you can figure out if a 5th point is inside them or not. (If the 5th one
+      is inside the solid that's formed by the 4 points... or not.)
+      (Similarly, you could figure out    for 3 points / a plane    whether another point (a 4th point)
+      is in the same plane, or not.
+
+
+
