@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>2D Modeler</title>
-        <script defer type="text/javascript" src="scripts\WebBased2DModeler_Main.js"></script>
-        <script defer type="text/javascript" src="scripts\WebBased2DModeler_Geometry.js"></script>
-        <script defer type="text/javascript" src="scripts\WebBased2DModeler_Source3.js"></script>
+        <script defer type="text/javascript" src="scripts\Main.js"></script>
+        <script defer type="text/javascript" src="scripts\Geometry.js"></script>
+        <script defer type="text/javascript" src="scripts\OtherClasses.js"></script>
         <link rel="stylesheet" href="styles\2DModeler.css">
     </head>
     <body>
@@ -25,26 +25,18 @@
         
         <!--<input type="checkbox" id="snapModeCheckbox"></input><br>-->
         
-        <div>
-            <input type="checkbox" id="panModeCheckbox">
-            <label>Pan mode</label>
-        </div>
+        <input type="checkbox" id="endPointSnappingCheckBox"/>
+        <label>Endpoint snapping</label><br>
         
-        <div id="">
-            <input type="checkbox" id="showMouseCoordsCheckbox">
-            <label for="showMouseCoordsCheckbox">Show the current mouse coordinates. (Not working yet.)</label>
-        </div>
+        <input type="checkbox" id="panModeCheckbox">
+        <label>Pan mode</label><br>
         
-        <div id="">
-            <input type="checkbox" id="drawingAnimationsCheckbox">
-            <label for="">Animations when you're drawing. (Not working yet.)</label>
-        </div>
+        <input type="checkbox" id="drawingAnimationsCheckbox">
+        <label for="">Animations when you're drawing. (Not working yet.)</label><br>
         
-        <div id="">
-            <input type="text" id="manuallyEnterNextMouseclickInput">
-            <label for="manuallyEnterNextMouseclickInput">Coordinate for the next click. (Not working yet.)</label>
-            <button id="setCursorCoordinatesButton">Go</button>
-        </div>
+        <input type="text" id="manualCoordinatesInput">
+        <label for="manualCoordinatesInput">Coordinate for the next click. (Not working yet.)</label>
+        <button id="manualCoordinatesButton">Go</button><br>
         
         <br>
         
@@ -86,9 +78,12 @@
         
         
         <div class="bottomBar">
+            <span id="cursorCoordinatesReadout"></span>
+            <!--
             <span>Info bar item 1 | </span>
             <span>Info bar item 2 | </span>
             <span>Info bar item 3</span>
+            -->
         </div>
         
     </body>

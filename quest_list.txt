@@ -38,7 +38,11 @@ Zoom
   
   
   
-  
+Related to setting the coordinates for a mouse click...
+It sounds like you cannot programmaticlly set the position of the mouse on the page.
+https://stackoverflow.com/questions/9488626/how-to-set-the-cursor-position-on-the-screen
+But I still might be able to just let the user enter the coordinates for the next quote-unquote "click"...
+...and then just take it from there.  
   
   
   
